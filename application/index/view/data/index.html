@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<link rel="stylesheet" type="text/css" href="/static/css/qhcss.css">
+		<script type="text/javascript" src="/static/js/jquery.js"></script>
+		<script type="text/javascript" src="/static/js/echarts.js"></script>
+		<script type="text/javascript" src="/static/js/jquery.flipcountdown.js"></script>
+		<link rel="stylesheet" type="text/css" href="/static/css/jquery.flipcountdown.css" />
+
+	<!-- // <script src="/static/js/jquery-1.10.2.min.js"></script> -->
+	<script type="text/javascript" src="/static/js/echarts-all-3.js"></script>
+    <script type="text/javascript" src="/static/js/dataTool.min.js"></script>
+    <script type="text/javascript" src="/static/js/china.js"></script>
+    <script type="text/javascript" src="/static/js/world.js"></script>
+		<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>-->
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nrpMb65kHEovGvqlcqBMCdIqO97XrvkY"></script>
+
+    <script type="text/javascript" src="/static/js/bmap.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+
+		<title>泉湖公园数据展示</title>
+	</head>
+	<script type="text/javascript">
+		$(function(){
+			var i = "000000";
+			$('#retroclockbox_counter').flipcountdown({
+				tick:function(){
+					return i;
+				},size:'lg'
+			});
+
+			var j = "000000";
+			$('#retroclockbox_counter2').flipcountdown({
+				tick:function(){
+					return j;
+				},size:'lg'
+			})
+	})
+	</script>
+	<body>
+<!--     // <script src="jquery-1.10.2.min.js"></script> -->
+
+		<div id="wrap">
+			<div id="container">
+				<div id="left-sidebar">
+					<div class="ls-top">
+						<div id="retroclockbox_counter" class="counter1"></div>
+						<p id="maxbyday">0</p>
+					</div>
+					<div class="ls-middle">
+						<div id="retroclockbox_counter2" class="counter1"></div>
+						<p id="totalhistory">0</p>
+					</div>
+<!-- 5.17 change -->
+					<div class="ls-bottom">
+						<div class="lsb-top">
+							<img src="/static/images/time.png">
+							<div class="lsbt-right">
+								<p class="font1">游客平均驻留时间</p>
+								<p class="font2" ><span id='hour'>2</span><span class="font3">小时</span><span id='min'>15</span><span class="font3">分钟</span></p>
+							</div>
+						</div>
+						<div class="lsb-text">
+							<h1 id='clock'>09:00:30<span class="font4">AM</span></h1>
+							<h3 id='year'>2017<span class="font5">年</span>5<span class="font5">月</span>16<span class="font5">日</span></h3>
+						</div>
+
+<!-- 5.17 change end -->
+<!-- 						<div class="lsb-text">
+							<p class="font4">游客来源分析</p>
+							<div class="">
+								<p class="font5 lsb-lnno">省内游客数</p>
+								<div class="lsb-rno">
+									<p class="bg-first">总数571,252</p>
+									<p  class="bg-sec">贵阳348,472</p>
+								</div>
+							</div>
+							<div class="clear lsb-wno">
+								<p class="lsb-lwno">省外游客数</p>
+								<div class="lsb-rwno">
+									<p>852,262</p>
+								</div>
+							</div>
+						</div> -->
+
+					</div>
+				</div>
+				<div id="right-sidebar">
+					<img src="/static/images/title.png" class="contents_img_title">
+					<div id="rs-top">
+						<div class="hotheat">
+							<div id="hot" style="height: 100%"></div>
+						</div>
+						<div class="ranking">
+							<p class="p-img"><span>公园热门景点排行</span></p>
+							<ul class="ul-first">
+								<li>
+									<ul class="ul-list" id='fire1'>
+										<li>1</li>
+										<li>神谷密境</li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-list" id='fire2'>
+										<li>2</li>
+										<li>云楼禅影</li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-list" id='fire3'>
+										<li>3</li>
+										<li>空山止水</li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire4'>
+										<li>4</li>
+										<li>水舞天章</li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire5'>
+										<li>5</li>
+										<li>文澜对雪</li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="/static/images/fire_light.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire6'>
+										<li>6</li>
+										<li>水玉长桥</li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire7'>
+										<li>7</li>
+										<li>普罗夕照</li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire8'>
+										<li>8</li>
+										<li>百戏云阶</li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire9'>
+										<li>9</li>
+										<li>环湖映画</li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire10'>
+										<li>10</li>
+										<li>无名石韵</li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire11'>
+										<li>11</li>
+										<li>夜郎溪畔</li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static//images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire12'>
+										<li>12</li>
+										<li>净心广场</li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+								<li>
+									<ul class="ul-lists" id='fire13'>
+										<li>13</li>
+										<li>数据泉湖</li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+										<li><img src="./static/images/fire.png"></li>
+									</ul>
+								</li>
+						</div>
+					</div>
+					<div id="rsb-bottom">
+						<div id="rs-bar1">
+							<p class="pb-img"><span>近24小时游客人数趋势</span></p>
+							<div class="bar1">
+								<div id="bar1" style="width:409px;height:265px;"></div>
+							</div>
+						</div>
+						<div id="rs-bar2">
+							<p class="pb-img"><span>近7天游客人数趋势</span></p>
+							<div class="bar2">
+								<div id="bar2" style="width:409px;height:265px;"></div>
+							</div>
+						</div>
+						<div id="rs-bar3">
+							<p class="pb-img"><span>近12个月游客人数趋势</span></p>
+							<div class="bar3">
+								<div id="bar3" style="width:409px;height:265px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	</html>
+	<script>
+		var ip ="{$ip}"
+	</script>
+	<script type="text/javascript" src="./static/js/echartdata.js"></script>
+	<script type="text/javascript" src="./static/js/heat.js"></script>
+    <audio id='audioPlay' src='./static/wav/4611.wav' hidden='true' loop='loop'>
+        <style type="text/css">
+        .anchorBL{
+        display:none;
+        }
+        </style>
